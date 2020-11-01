@@ -7,7 +7,7 @@
 // Import MySQL connection.
 
 
-// Copy and pasted from the Cat's example we did and class. I did this since I remembered in class that usually, 99% of the time we were told we don't write the ORM's.  It's a plus if you know how, but it's good to have a template for this. So I decided to go with the ladder with this.
+// Copy and pasted from the Cat's example we did and class. I did this since I remembered in class that usually, 99% of the time we were told we don't write the ORM's.  It's a plus if you know how, but it's good to have a template for this. So I decided to go with the ladder with this.  The cat's example we did in class dealt with all of this.
 var connection = require("../config/connection.js");
 
 function printQuestionMarks(num) {
