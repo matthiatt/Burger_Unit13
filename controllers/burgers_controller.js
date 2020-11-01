@@ -6,15 +6,15 @@
 // 
 // **NOTE** -- Took this example again from the cat's example we did in class. I changed some methods to correlate with other files being called.
 
-var express = require("express");
-var router = express.Router();
-var burger = require("../models/burger");
+const express = require("express");
+const router = express.Router();
+const burger = require("../models/burger");
 
 router.get("/", function(req, res) 
 {
   burger.selectAll(function(data) //Using 'selectAll' since it was used in a previous example in the 'cat's' example.  Since it was used previously, I am going to be consistant and make it more easily readable, but also for less bug problems.
   {
-    var hbsObject = 
+    let hbsObject = 
     {
       burger: data
     };
@@ -40,7 +40,7 @@ router.post("/api/burger", function(req, res)
 
 router.put("/api/burger/:id", function(req, res) 
 {
-  var condition = "id = " + req.params.id;
+  let condition = "id = " + req.params.id;
 
   burger.updateOne(
   {
@@ -61,7 +61,7 @@ router.put("/api/burger/:id", function(req, res)
 
 router.delete("/api/burger/:id", function(req, res) 
 {
-  var condition = "id = " + req.params.id;
+  let condition = "id = " + req.params.id;
 
   burger.delete(condition, function(result) 
   {
