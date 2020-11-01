@@ -1,9 +1,9 @@
 // Again, got most of this from the Cat's example that we did in class.
 
 // Declare my variables and const here to determine the rest of the layout of the page and how it will function:
-const express = requires("express");
+const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3001;
 
 //setting the handlebars here for the rest of the layout.
 const expressHandleBars = require("express-handlebars");
@@ -19,7 +19,6 @@ var routes = require("./controllers/burgers_controller.js");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public")); //setting public folder to static since that is standard practice.
-app.use(routes);
 
 // Telling the server to connect to this PORT.
 app.listen(PORT, function() 

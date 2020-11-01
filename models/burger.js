@@ -32,9 +32,9 @@ var burger = {
     });
   },
   //db.collection.deleteOne
-  deleteOne: function(condition, cb) 
+  delete: function(condition, cb) 
   {
-    orm.deleteOne("burger", condition, function(res) 
+    orm.delete("burger", condition, function(res) 
     {
       cb(res);
     });
