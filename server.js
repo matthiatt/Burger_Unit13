@@ -22,6 +22,7 @@ app.use(express.static("public")); //setting public folder to static since that 
 app.use(routes);
 
 // Telling the server to connect to this PORT.
-app.listen(PORT, function() {
+app.listen(PORT, function() 
+{
   console.log("App now listening at http://localhost:" + PORT);
 });
