@@ -59,20 +59,20 @@ router.put("/api/burger/:id", function(req, res)
   });
 });
 
-// router.deleteOne("/api/burger/:id", function(req, res) 
-// {
-//   var condition = "id = " + req.params.id;
+router.deleteOne("/api/burger/:id", function(req, res) 
+{
+  var condition = "id = " + req.params.id;
 
-//   burger.deleteOne(condition, function(result) 
-//   {
-//     if (result.affectedRows == 0) 
-//     {
-//       return res.status(404).end();
-//     } else 
-//     {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  burger.deleteOne(condition, function(result) 
+  {
+    if (result.affectedRows == 0) 
+    {
+      return res.status(404).end();
+    } else 
+    {
+      res.status(200).end();
+    }
+  });
+});
 
 module.exports = router.js;
