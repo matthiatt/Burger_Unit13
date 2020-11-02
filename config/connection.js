@@ -4,8 +4,8 @@
 // Used example from the cats example in class.
 const mysql = require("mysql");
 
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
+if (process.env.PORT) {
+    connection = mysql.createConnection(process.env.PORT);
 } else {
     connection = mysql.createConnection({
         host: "localhost",
@@ -18,4 +18,4 @@ if (process.env.JAWSDB_URL) {
 
 connection.connect();
 
-module.exports = connection.js;
+module.exports = connection;

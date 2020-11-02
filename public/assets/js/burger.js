@@ -3,7 +3,8 @@
 //**NOTE** I got all this from the cat example.
 
 $(function() {
-  $(".burger").on("click", function(event) {
+  $(".burger").on("click", function(event) 
+  {
     var id = $(this).data("id");
     var burgerName = $(this).data("burger_name");
 
@@ -11,18 +12,21 @@ $(function() {
       burger: burgerName
     };
 
-    $.ajax("/api/burger/" + id, {
+    $.ajax("/api/burger/" + id, 
+    {
       type: "PUT",
       data: burger
     }).then(
-      function() {
+      function() 
+      {
         console.log("changed sleep to", burgerName);
         location.reload();
       }
     );
   });
 
-  $(".create-form").on("submit", function(event) {
+  $(".create-form").on("submit", function(event) 
+  {
     event.preventDefault();
 
     var newBurger = {
@@ -30,24 +34,29 @@ $(function() {
       newName: $("[name=newName]:checked").val().trim()
     };
 
-    $.ajax("/api/burger", {
+    $.ajax("/api/burger", 
+    {
       type: "POST",
       data: newBurger
     }).then(
-      function() {
+      function() 
+      {
         console.log("created new burger");
         location.reload();
       }
     );
   });
 
-  $(".delete-burger").on("click", function(event) {
+  $(".delete-burger").on("click", function(event) 
+  {
     var id = $(this).data("id");
 
-    $.ajax("/api/burger/" + id, {
+    $.ajax("/api/burger/" + id, 
+    {
       type: "DELETE"
     }).then(
-      function() {
+      function() 
+      {
         console.log("deleted burger", id);
         location.reload();
       }
