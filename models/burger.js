@@ -6,7 +6,7 @@
 
 const orm = require("../config/orm");
 
-var burger = {
+let burger = {
     // Using 'selectAll' here since I want to select all within this specific area, and not EVERYTHING.
   selectAll: function(cb) 
   {
