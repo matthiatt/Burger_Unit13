@@ -3,7 +3,7 @@
 // Declare my variables and const here to determine the rest of the layout of the page and how it will function:
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 
 //setting the handlebars here for the rest of the layout.
 const expressHandleBars = require("express-handlebars");
