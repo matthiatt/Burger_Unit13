@@ -1,4 +1,5 @@
 // I noticed the example in the homework README.md didn't include a folder for js and a file like how the cats example was done.  So just as a precautionary check, I decided to add one.  If it's not needed I will take note and disable it.
+
 //**NOTE** I got all this from the cat example.
 
 $(function() {

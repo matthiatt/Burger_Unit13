@@ -1,5 +1,7 @@
 // setup the code to connect Node to MySQL.
 // Export the connection.
+
+// Used example from the cats example in class.
 const mysql = require("mysql");
 
 if (process.env.JAWSDB_URL) {

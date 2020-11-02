@@ -8,17 +8,18 @@ const PORT = process.env.PORT || 3001;
 //setting the handlebars here for the rest of the layout.
 const expressHandleBars = require("express-handlebars");
 
+// Expressing what express methods to use.
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public")); //setting public folder to static since that is standard practice.
+
 // Starting the server and setting.
 app.engine("express handle-bars", expressHandleBars({ defaultLayout: "main" }));
 app.set("engine", "express handle-bars");
 
 // Declaring the route on where to redirect to once connected to the server.
 var routes = require("./controllers/burgers_controller.js");
-
-// Expressing what express methods to use.
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static("public")); //setting public folder to static since that is standard practice.
+app.set(routes);
 
 // Telling the server to connect to this PORT.
 app.listen(PORT, function() 
