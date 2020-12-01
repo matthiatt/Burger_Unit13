@@ -1,0 +1,21 @@
+  h1,
+  h2,
+  h3,
+  ul {
+      text-align: center;
+  }
+
+  .create-form {
+      text-align: center;
+  }
+
+  #button {
+      margin-top: 10px;
+  }
+
+  .image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+  }

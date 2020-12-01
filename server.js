@@ -1,28 +1,21 @@
-// Again, got most of this from the Cat's example that we did in class.
+var express = require("express");
+var PORT = process.env.PORT || 3000;
 
-// Declare my variables and const here to determine the rest of the layout of the page and how it will function:
-const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 3001;
+var app = express();
 
-//setting the handlebars here for the rest of the layout.
-const expressHandleBars = require("express-handlebars");
-
-// Expressing what express methods to use.
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public")); //setting public folder to static since that is standard practice.
 
-// Starting the server and setting.
-app.engine("express handle-bars", expressHandleBars({ defaultLayout: "main" }));
-app.set("engine", "express handle-bars");
+var exphbs = require("express-handlebars");
 
-// Declaring the route on where to redirect to once connected to the server.
-var routes = require("./controllers/burgers_controller.js");
-app.set(routes);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// Telling the server to connect to this PORT.
-app.listen(PORT, function() 
-{
-  console.log("App now listening at http://localhost:" + PORT);
+var getRoute = require("./controllers/burgers_controller.js");
+
+app.use(getRoute);
+
+app.listen(PORT, function () {
+  console.log("Server listening on: http://localhost:" + PORT);
 });
