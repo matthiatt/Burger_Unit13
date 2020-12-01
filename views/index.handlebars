@@ -20,3 +20,37 @@
     {{/if}}
     {{/each}}
 </ul>
+
+<h2>Devour Your Own Burger</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="ca">Burger Name:</label>
+        <input type="text" id="burgerTitle" name="name">
+    </div>
+
+    <button id="button" type="submit">Add New Burger</button>
+</form>
+
+<script>
+    $('#button').on('click', function (e) {
+        e.preventDefault()
+        $('#burgerTitle').val())
+    $.ajax({
+        url: '/api/addnew',
+        data: { name: $('#burgerTitle').val() },
+        type: 'POST'
+    }).then(function (data) {
+        window.location.reload();
+    })
+    }
+    $('.burgerState').on('click', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/api/devoured/' + $(this).attr('burgerId'),
+            type: 'PUT'
+        }).then(function (data) {
+            window.location.reload();
+        })
+    });
+</script>

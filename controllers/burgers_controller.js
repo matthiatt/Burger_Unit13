@@ -12,8 +12,7 @@ router.get("/", function (req, res) {
   });
 });
 
-router.post("/api/addNewBurger", function (req, res) {
-  // used to be addnew
+router.post("/api/addnew", function (req, res) {
   linkRouteBurger.create(
     ["burgerName", "destroyBurger"],
     [req.body.name, false],
