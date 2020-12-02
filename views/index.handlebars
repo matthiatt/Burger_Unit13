@@ -1,55 +1,40 @@
-<h1>Hello! and welcome to the world of burgers!</h1>
+<div class="container">
+    <h1>Eat a Burger!</h1>
 
-<h3>Which Burger Would You Like?</h3>
-
-<ul>
-    {{#each linkRouteBurger}}
-    {{#unless destroyBurger}}
-    <h3>{{this.burgerName}}</h3>
-    <button burgerId={{this.id}} class="burgerState">Eat me</button>
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Burgers that have been devoured by you.</h2>
-
-<ul>
-    {{#each linkRouteBurger}}
-    {{#if destroyBurger }}
-    <h3>{{this.burgerName}}</h3>
-    {{/if}}
-    {{/each}}
-</ul>
-
-<h2>Devour Your Own Burger</h2>
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="ca">Burger Name:</label>
-        <input type="text" id="burgerTitle" name="name">
+    <div class="row">
+        <div class="col-4">
+            <ul class="recoverable">
+                {{#each burgerInfo}}
+                {{#unless deleteBurger}}
+                {{> burgerInfo}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul class="deleted">
+                {{#each burgerInfo}}
+                {{#if deleteBurger}}
+                {{> burgerInfo}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
     </div>
-
-    <button id="button" type="submit">Add New Burger</button>
-</form>
-
-<script>
-    $('#button').on('click', function (e) {
-        e.preventDefault()
-        $.ajax({
-            url: '/api/addnew',
-            data: { name: $('#burgerTitle').val() },
-            type: 'POST'
-        }).then(function (data) {
-            console.log(data);
-        })
-    });
-    $('.burgerState').on('click', function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: '/api/devoured/' + $(this).attr('burgerId'),
-            type: 'DELETE'
-        }).then(function (data) {
-            window.location.reload();
-        })
-    });
-</script>
+    <div class="row">
+        <div class="col">
+            <h2>You can add the burger right here!</h2>
+            <form class="makeBurgerNew">
+                <div class="form-group">
+                    <label for="makeBurgerNew">Enter a name of a burger you wish to generate!</label>
+                    <div class="row">
+                        <div class="col">
+                            <textarea id="makeBurgerNew" name="makeBurgerNew" rows="2" cols="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id="add">Add Burger</button>
+            </form>
+        </div>
+    </div>
+</div>
