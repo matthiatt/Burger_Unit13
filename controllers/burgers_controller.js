@@ -7,15 +7,18 @@ router.get("/", function (req, res) {
     var burgerObj = {
       burgers: burgerData,
     };
-    console.log(burgerObj);
+    // console.log(burgerObj);
     res.render("index", burgerObj);
   });
 });
 
 router.post("/api/addnew", function (req, res) {
+  console.log(req.body);
   linkRouteBurger.create(
-    ["burgerName", "destroyBurger"],
-    [req.body.name, false],
+    // ["burgerName", "destroyBurger"],
+    // [req.body.name, false],
+    ["burger_name"],
+    [req.body.name],
     function () {
       res.send("Added a burger");
     }

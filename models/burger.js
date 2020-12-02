@@ -1,27 +1,27 @@
 let linkOrmData = require("../config/orm.js");
 
-let burgerObject = {
+let burger = {
   all: function (data) {
     linkOrmData.selectAll("burgers", function (res) {
       data(res);
     });
   },
 
-  create: function (c, v, data) {
-    linkOrmData.insertOne("burgers", c, v, function (res) {
+  create: function (cols, vals, data) {
+    linkOrmData.insertOne("burgers", cols, vals, function (res) {
       data(res);
     });
   },
-  update: function (ocv, state, data) {
-    linkOrmData.updateOne("burgers", ocv, state, function (res) {
+  update: function (objColVals, condition, data) {
+    linkOrmData.updateOne("burgers", objColVals, condition, function (res) {
       data(res);
     });
   },
-  delete: function (state, data) {
-    linkOrmData.delete("burgers", state, function (res) {
+  delete: function (condition, data) {
+    linkOrmData.delete("burgers", condition, function (res) {
       data(res);
     });
   },
 };
 
-module.exports = burgerObject;
+module.exports = burger;

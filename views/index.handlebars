@@ -35,20 +35,19 @@
 <script>
     $('#button').on('click', function (e) {
         e.preventDefault()
-        $('#burgerTitle').val())
-    $.ajax({
-        url: '/api/addnew',
-        data: { name: $('#burgerTitle').val() },
-        type: 'POST'
-    }).then(function (data) {
-        window.location.reload();
-    })
-    }
+        $.ajax({
+            url: '/api/addnew',
+            data: { name: $('#burgerTitle').val() },
+            type: 'POST'
+        }).then(function (data) {
+            console.log(data);
+        })
+    });
     $('.burgerState').on('click', function (e) {
         e.preventDefault();
         $.ajax({
             url: '/api/devoured/' + $(this).attr('burgerId'),
-            type: 'PUT'
+            type: 'DELETE'
         }).then(function (data) {
             window.location.reload();
         })
