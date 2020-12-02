@@ -64,7 +64,7 @@ $(() => {
     }
   });
 
-  $(".delete-burger").on("click", () => {
+  $(".delete-burger").on("delete", () => {
     var id = $(this).data("id");
 
     $.ajax("/api/burgers/" + id, {

@@ -1,37 +1,41 @@
 <div class="container">
     <h1>Eat a Burger!</h1>
-    </section>
 
-    <tr class="table-row">
-        <td class="table-first-col">{{id}}. {{burger_name}}</td>
-        <td><button class="change-devour">Devour it!</button></td>
-    </tr>
-
-    <section class="row">
+    <div class="row">
         <div class="col-4">
-            <table>
-                {{#each burgers}}
-                {{#unless devoured}}
-                {{> burgers/burger-block}}
+            <ul class="recoverable">
+                {{#each burgerInfo}}
+                {{#unless deleteBurger}}
+                {{burgerInfo}}
                 {{/unless}}
                 {{/each}}
-            </table>
+            </ul>
         </div>
         <div class="col-4">
-            {{#each burgers}}
-            {{#if devoured}}
-            <div>{{burger_name}}</div>
-            {{/if}}
-            {{/each}}
+            <ul class="deleted">
+                {{#each burgerInfo}}
+                {{#if deleteBurger}}
+                {{burgerInfo}}
+                {{/if}}
+                {{/each}}
+            </ul>
         </div>
-    </section>
-
-    <form class="create-form">
-        <div class="form-group">
-            <label for="name"></label>
-            <textarea id="name" name="burger-name" rows="2" cols="10"
-                placeholder="What type of burger would you like to have?"></textarea>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>You can add the burger right here!</h2>
+            <form class="makeBurgerNew">
+                <div class="form-group">
+                    <label for="makeBurgerNew">Enter a name of a burger you wish to generate!</label>
+                    <div class="row">
+                        <div class="col">
+                            <textarea id="makeBurgerNew" name="makeBurgerNew" rows="2" cols="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id="add">Add Burger</button>
+                <button type="delete" id="delete">Delete</button>
+            </form>
         </div>
-        <button type="submit">Click to add the burger here!</button>
-    </form>
+    </div>
 </div>
