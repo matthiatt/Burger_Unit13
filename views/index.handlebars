@@ -1,17 +1,14 @@
 <div class="container">
-    <section id="page-name">
-        <iframe id="main-image" src="https://giphy.com/embed/UAXou95E6oPjW" width="480" height="326" frameBorder="0"
-            class="giphy-embed" allowFullScreen></iframe>
-        <h1>Eat a Burger!</h1>
+    <h1>Eat a Burger!</h1>
     </section>
 
     <tr class="table-row">
         <td class="table-first-col">{{id}}. {{burger_name}}</td>
-        <td><button class="change-devour" data-id="{{id}}">Devour it!</button></td>
+        <td><button class="change-devour">Devour it!</button></td>
     </tr>
 
     <section class="row">
-        <div class="col-md-7 col-left">
+        <div class="col-4">
             <table>
                 {{#each burgers}}
                 {{#unless devoured}}
@@ -20,10 +17,10 @@
                 {{/each}}
             </table>
         </div>
-        <div class="col-md-5 col-right">
+        <div class="col-4">
             {{#each burgers}}
             {{#if devoured}}
-            <div>{{id}}. {{burger_name}}</div>
+            <div>{{burger_name}}</div>
             {{/if}}
             {{/each}}
         </div>
@@ -32,8 +29,9 @@
     <form class="create-form">
         <div class="form-group">
             <label for="name"></label>
-            <textarea id="name" name="burger-name" rows="2" cols="40" placeholder="What do you want to eat?"></textarea>
+            <textarea id="name" name="burger-name" rows="2" cols="10"
+                placeholder="What type of burger would you like to have?"></textarea>
         </div>
-        <button type="submit">Add Burger</button>
+        <button type="submit">Click to add the burger here!</button>
     </form>
 </div>
