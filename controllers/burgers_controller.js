@@ -51,23 +51,33 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-  burgerRouteLink.create(["name"], [req.body.name], (outcomes) => {
-    res.json({ id: outcomes.createId });
+  burgerRouteLink.create([req.body.name], (result) => {
+    res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/burgers/:id", (req, res) => {
-  let status = "id = " + req.params.id;
+router.put("/api/burgers/:id", function (req, res) {
+  var condition = "id = " + req.params.id;
 
-  burgerRouteLink.update(
-    { destroyBurger: req.body.destroyBurger },
-    status,
-    (outcome) => {
-      if (outcome.change == 0) {
-        return res.status(404).end();
-      }
+  burgerRouteLink.update(req.body, condition, function (result) {
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
     }
-  );
+  });
+});
+
+router.delete("/api/burgers/:id", function (req, res) {
+  var condition = "id = " + req.params.id;
+
+  burgerRouteLink.delete(condition, function (result) {
+    if (result.affectedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
 });
 
 module.exports = router;

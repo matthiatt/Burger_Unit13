@@ -1,40 +1,39 @@
 <div class="container">
-    <h1>Eat a Burger!</h1>
+    <section id="page-name">
+        <iframe id="main-image" src="https://giphy.com/embed/UAXou95E6oPjW" width="480" height="326" frameBorder="0"
+            class="giphy-embed" allowFullScreen></iframe>
+        <h1>Eat a Burger!</h1>
+    </section>
 
-    <div class="row">
-        <div class="col-4">
-            <ul class="recoverable">
-                {{#each burgerInfo}}
-                {{#unless deleteBurger}}
-                {{> burgerInfo}}
+    <tr class="table-row">
+        <td class="table-first-col">{{id}}. {{burger_name}}</td>
+        <td><button class="change-devour" data-id="{{id}}">Devour it!</button></td>
+    </tr>
+
+    <section class="row">
+        <div class="col-md-7 col-left">
+            <table>
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{> burgers/burger-block}}
                 {{/unless}}
                 {{/each}}
-            </ul>
+            </table>
         </div>
-        <div class="col-4">
-            <ul class="deleted">
-                {{#each burgerInfo}}
-                {{#if deleteBurger}}
-                {{> burgerInfo}}
-                {{/if}}
-                {{/each}}
-            </ul>
+        <div class="col-md-5 col-right">
+            {{#each burgers}}
+            {{#if devoured}}
+            <div>{{id}}. {{burger_name}}</div>
+            {{/if}}
+            {{/each}}
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h2>You can add the burger right here!</h2>
-            <form class="makeBurgerNew">
-                <div class="form-group">
-                    <label for="makeBurgerNew">Enter a name of a burger you wish to generate!</label>
-                    <div class="row">
-                        <div class="col">
-                            <textarea id="makeBurgerNew" name="makeBurgerNew" rows="2" cols="10"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" id="add">Add Burger</button>
-            </form>
+    </section>
+
+    <form class="create-form">
+        <div class="form-group">
+            <label for="name"></label>
+            <textarea id="name" name="burger-name" rows="2" cols="40" placeholder="What do you want to eat?"></textarea>
         </div>
-    </div>
+        <button type="submit">Add Burger</button>
+    </form>
 </div>
