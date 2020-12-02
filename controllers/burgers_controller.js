@@ -51,7 +51,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-  burgerRouteLink.create([req.body.name], (result) => {
+  burgerRouteLink.create(["burger_name"], [req.body.name], (result) => {
     res.json({ id: result.insertId });
   });
 });

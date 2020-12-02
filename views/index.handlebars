@@ -1,3 +1,5 @@
+{{!-- // My post route is working and saving to the database. --}}
+
 <div class="container">
     <h1>Eat a Burger!</h1>
 
@@ -6,7 +8,7 @@
             <ul class="recoverable">
                 {{#each burgerInfo}}
                 {{#unless deleteBurger}}
-                {{burgerInfo}}
+                <li>{{burger_name}}</li>
                 {{/unless}}
                 {{/each}}
             </ul>
@@ -39,3 +41,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    $("#add").on("click", function (e) {
+        e.preventDefault();
+        var burgerName = $("#makeBurgerNew").val();
+        console.log(burgerName);
+        $.ajax({
+            url: "/api/burgers",
+            method: "POST",
+            data: { name: burgerName }
+        }).then(function (response) {
+            console.log(response)
+        })
+    })
+</script>
