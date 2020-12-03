@@ -55,5 +55,18 @@
             console.log(response)
             window.location.reload()
         })
+    });
+    $("#delete").on("click", function (e) {
+        e.preventDefault();
+        var burgerDelete = $("#makeBurgerNew").val();
+        console.log(burgerDelete);
+        $.ajax({
+            url: "/api/burgers/" + burgers_id,
+            method: "DELETE",
+            data: { name: burgerDelete }
+        }).then(function (response) {
+            console.log(respone)
+            window.location.reload()
+        });
     })
 </script>
